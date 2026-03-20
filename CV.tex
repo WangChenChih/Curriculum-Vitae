@@ -1,0 +1,143 @@
+\documentclass{article}
+
+\usepackage[margin=2cm]{geometry}
+%\usepackage[fleqn]{amsmath}
+
+\usepackage{CJKutf8}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{threeparttable}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\urlstyle{same}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{dsfont}
+
+\usepackage[T1]{fontenc} %\textsc and \textbf at the same time
+
+\pagenumbering{gobble} % no page number
+
+%%%%%%%%%%%%%%% newcommands for sec and item %%%%%%%%%%%%%%%
+
+%--------------ordinary font size--------------
+\newcommand{\ordinaryfontsize}{\fontsize{12pt}{24pt}\selectfont} % set the ordinary font size
+
+%--------------section--------------
+\newcommand{\newsection}[1]{
+\fontsize{16pt}{24pt}\selectfont
+\noindent{\color{gray}\rule{\linewidth}{0.4pt}}
+
+    \vspace{-0.2cm}
+
+\noindent\textsc{\textbf{#1}}
+\ordinaryfontsize % back to the ordinary font size
+\vspace{-0.3cm}
+}
+
+%--------------major item (with time)--------------
+% \resemeitem{<experience>}{<date>}
+\newcommand{\resemeitem}[2]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        {\color{violet}\textbf{#1}} &   {\color{gray}\textit{#2}}
+    \end{tabular*}
+    \vspace{-5mm}
+}
+
+%--------------environment for majoritem--------------
+% usege:
+%\begin{resemelist}
+%    \resemeitem{<experience1>}{<date1>}
+%    \resemeitem{<experience2>}{<date2>}
+%\end{resemelist}
+\newenvironment{resemelist}
+{
+  \begin{list}{}{ % label
+    \setlength{\leftmargin}{-0.1em}
+    \setlength{\itemsep}{-3.5mm}
+  }
+}
+{
+  \end{list}
+}
+
+%--------------environment for sublists--------------
+% usege:
+%\begin{resemelist}
+%   \resemeitem{<experience1>}{<date1>}
+%       \begin{sublist}
+%           \item item1
+%           \item item2
+%       \end{sublist}
+%\end{resemelist}
+\newenvironment{sublist}
+{
+  \begin{list}{$\bullet$}{ % label
+    \setlength{\itemsep}{-3.5mm}
+  }
+}
+{
+  \end{list}
+}
+
+%%%%%%%%%%%%%%% basic info %%%%%%%%%%%%%%%%
+\newcommand{\name}{Chen-Chih Wang}
+\newcommand{\email}{good.wangchanz@gapp.nthu.edu.tw}
+
+\begin{document}
+
+%%%%%%%%%%%%%%% header %%%%%%%%%%%%%%%%%%
+\fancyhead[L]{{\color{cyan}Links available from PDf file}}
+\fancyhead[C]{\name}
+\fancyhead[R]{\href{mailto:\email}{\email}}
+
+%%%%%%%%%%%%%%% title %%%%%%%%%%%%%%%
+\fontsize{20pt}{30pt}\selectfont
+\begin{center}
+\textbf{\name}
+\end{center}
+\ordinaryfontsize
+
+\vspace{-0.6cm}
+
+%%%%%%%%%%%%%%% main text %%%%%%%%%%%%%%%
+
+%------------education and positions----------
+\newsection{Education}
+\begin{resemelist}
+    \resemeitem{M.S., Physics, National Tsing Hua University, Hsinchu, Taiwan}{Start in 2025}
+        \begin{sublist}
+            \item GPA
+        \end{sublist}
+
+    \resemeitem{B.S., Physics, National Tsing Hua University, Hsinchu, Taiwan}{}
+\end{resemelist}
+
+%------------publications------------
+\newsection{Papers (Including Unpublished Works)}
+
+%------------honors------------
+\newsection{Honors}
+\begin{sublist}
+    \item honor2
+    \item honor1
+\end{sublist}
+
+%------------honors------------
+\newsection{Research Experience}
+\begin{resemelist}
+    \resemeitem{Summer Internship, IoP, Academia Sinica}{July 2024 - Aug 2024}
+\end{resemelist}
+
+
+
+\end{document}
