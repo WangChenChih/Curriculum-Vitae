@@ -16,12 +16,11 @@
 %--------------major item (with time)--------------
 % \resemeitem{<experience>}{<date>}
 \newcommand{\resemeitem}[2]{
-\vspace{0.5mm}\item
 
+    \item
     {\color{violet}\textbf{#1}} \hfill {\fontsize{9pt}{10pt}\selectfont
         \color{gray}\textbf{\textit{#2}}}
     
-    \vspace{-5mm}
 }
 
 %--------------environment for majoritem--------------
@@ -32,15 +31,18 @@
 %\end{resemelist}
 \newenvironment{resemelist}
 {
+
+%\vspace{5mm}
+
   \begin{list}{}{ % label
     \setlength{\leftmargin}{1mm}
-    \setlength{\itemsep}{1mm}
+    \setlength{\itemsep}{-4mm}
   }
 }
 {
   \end{list}
   
-  %\vspace{-5mm}
+  \vspace{-5mm}
 }
 
 %--------------environment for sublists--------------
@@ -54,24 +56,26 @@
 %\end{resemelist}
 \newenvironment{sublist}
 {
-\vspace{2mm}
+
+\vspace{-3mm}
 
     \fontsize{10pt}{12pt}\selectfont
-  \begin{list}{$\bullet$}{ % label
+  \begin{list}{$-$}{ % label
     \setlength{\itemsep}{-1mm}
   }
 }
 {
   \end{list}
 
-  \vspace{-8mm}
+  \vspace{-2mm}
+  
 }
 
 %--------------- time sublist --------------
 % \timeitem{<experience>}{<date>}
 \newcommand{\timeitem}[2]{
-\vspace{0.5mm}\item
 
+    \item
     #1 \hfill {\fontsize{9pt}{10pt}\selectfont
         \color{gray}\textbf{\textit{#2}}}
         
