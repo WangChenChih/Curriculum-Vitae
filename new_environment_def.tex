@@ -1,0 +1,112 @@
+%--------------ordinary font size--------------
+\newcommand{\ordinaryfontsize}{\fontsize{12pt}{24pt}\selectfont} % set the ordinary font size
+
+%--------------section--------------
+\newcommand{\newsection}[1]{
+\fontsize{16pt}{24pt}\selectfont
+\noindent{\color{gray}\rule{\linewidth}{0.4pt}}
+
+    \vspace{-0.2cm}
+
+\noindent\textsc{\textbf{#1}}
+\ordinaryfontsize % back to the ordinary font size
+\vspace{-0.5cm}
+}
+
+%--------------major item (with time)--------------
+% \resemeitem{<experience>}{<date>}
+\newcommand{\resemeitem}[2]{
+\vspace{0.5mm}\item
+
+    {\color{violet}\textbf{#1}} \hfill {\fontsize{9pt}{10pt}\selectfont
+        \color{gray}\textbf{\textit{#2}}}
+    
+    \vspace{-5mm}
+}
+
+%--------------environment for majoritem--------------
+% usege:
+%\begin{resemelist}
+%    \resemeitem{<experience1>}{<date1>}
+%    \resemeitem{<experience2>}{<date2>}
+%\end{resemelist}
+\newenvironment{resemelist}
+{
+  \begin{list}{}{ % label
+    \setlength{\leftmargin}{1mm}
+    \setlength{\itemsep}{1mm}
+  }
+}
+{
+  \end{list}
+  
+  %\vspace{-5mm}
+}
+
+%--------------environment for sublists--------------
+% usege:
+%\begin{resemelist}
+%   \resemeitem{<experience1>}{<date1>}
+%       \begin{sublist}
+%           \item item1
+%           \item item2
+%       \end{sublist}
+%\end{resemelist}
+\newenvironment{sublist}
+{
+\vspace{2mm}
+
+    \fontsize{10pt}{12pt}\selectfont
+  \begin{list}{$\bullet$}{ % label
+    \setlength{\itemsep}{-1mm}
+  }
+}
+{
+  \end{list}
+
+  \vspace{-8mm}
+}
+
+%--------------- time sublist --------------
+% \timeitem{<experience>}{<date>}
+\newcommand{\timeitem}[2]{
+\vspace{0.5mm}\item
+
+    #1 \hfill {\fontsize{9pt}{10pt}\selectfont
+        \color{gray}\textbf{\textit{#2}}}
+        
+}
+
+%--------------environment for time sublists--------------
+\newenvironment{timesublist}
+{
+\vspace{2mm}
+
+    \fontsize{10pt}{12pt}\selectfont
+  \begin{list}{$\bullet$}{ % label
+    \setlength{\leftmargin}{5mm}
+    \setlength{\itemsep}{-1.5mm}
+  }
+}
+{
+  \end{list}
+  
+  \vspace{-6mm}
+}
+
+%----------- paper lists ----------------
+\newenvironment{paperlist}
+{
+\vspace{2mm}
+
+    \fontsize{10pt}{12pt}\selectfont
+  \begin{list}{$\bullet$}{ % label
+    \setlength{\leftmargin}{5mm}
+    \setlength{\itemsep}{-1.5mm}
+  }
+}
+{
+  \end{list}
+  
+  \vspace{-5mm}
+}
