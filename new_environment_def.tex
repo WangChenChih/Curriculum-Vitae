@@ -1,96 +1,94 @@
-%--------------ordinary font size--------------
-\newcommand{\ordinaryfontsize}{\fontsize{12pt}{24pt}\selectfont} % set the ordinary font size
+\newcommand{\timelayout}{0.23\textwidth}
+\newcommand{\itemlayout}{0.75\textwidth}
+
+%------------ordinary font size------------
+\newcommand{\ordinaryfontsize}{\fontsize{10pt}{12pt}\selectfont} % set the ordinary font size
 
 %--------------section--------------
 \newcommand{\newsection}[1]{
-\fontsize{16pt}{24pt}\selectfont
+
+\vspace{3mm}
+
 \noindent{\color{gray}\rule{\linewidth}{0.4pt}}
 
     \vspace{-0.2cm}
 
+\fontsize{16pt}{24pt}\selectfont
 \noindent\textsc{\textbf{#1}}
+
 \ordinaryfontsize % back to the ordinary font size
-\vspace{-0.5cm}
+
+\vspace{2mm}
 }
 
 %--------------major item (with time)--------------
 % \resemeitem{<experience>}{<date>}
 \newcommand{\resemeitem}[2]{
 
-    \item
-    {\color{violet}\textbf{#1}} \hfill {\fontsize{9pt}{10pt}\selectfont
-        \color{gray}\textbf{\textit{#2}}}
+\noindent\begin{tabular}{p{\timelayout} p{\itemlayout}}
+    {\ordinaryfontsize
+    \color{gray}\textbf{\textit{#2}}}
+    &
+    {\fontsize{12}{12}\color{violet}\textbf{#1}}
+\end{tabular}
+
+\vspace{-1mm}
     
 }
-
-%--------------environment for majoritem--------------
-% usege:
-%\begin{resemelist}
-%    \resemeitem{<experience1>}{<date1>}
-%    \resemeitem{<experience2>}{<date2>}
-%\end{resemelist}
-\newenvironment{resemelist}
-{
-
-%\vspace{5mm}
-
-  \begin{list}{}{ % label
-    \setlength{\leftmargin}{1mm}
-    \setlength{\itemsep}{-4mm}
-  }
-}
-{
-  \end{list}
-  
-  \vspace{-7mm}
-}
-
 %--------------environment for sublists--------------
 % usege:
-%\begin{resemelist}
-%   \resemeitem{<experience1>}{<date1>}
-%       \begin{sublist}
-%           \item item1
-%           \item item2
-%       \end{sublist}
-%\end{resemelist}
+%\resemeitem{<experience1>}{<date1>}
+%    \begin{sublist}
+%        \item item1
+%        \item item2
+%    \end{sublist}
 \newenvironment{sublist}
 {
 
-\vspace{-2mm}
+\vspace{-4mm}
 
-    \fontsize{10pt}{12pt}\selectfont
+\noindent\begin{tabular}{p{\timelayout} p{\itemlayout}}
+
+\quad &
+
+    \ordinaryfontsize
   \begin{list}{$-$}{ % label
-    %\setlength{\itemsep}{0mm}
+    \setlength{\itemsep}{0mm}
   }
 }
 {
   \end{list}
 
-  \vspace{-1mm}
+\end{tabular}
+
+  \vspace{1mm}
   
 }
 
-%--------------- time sublist --------------
+%--------------- time item --------------
 % \timeitem{<experience>}{<date>}
 \newcommand{\timeitem}[2]{
 
-    \item
-    #1 \hfill {\fontsize{9pt}{10pt}\selectfont
-        \color{gray}\textbf{\textit{#2}}}
-        
+\noindent\begin{tabular}{p{\timelayout} p{\itemlayout}}
+    {\color{gray}\ordinaryfontsize
+    \textbf{\textit{#2}}}
+    &
+    {\color{black}\ordinaryfontsize #1}
+\end{tabular}
+
+\vspace{-1mm}
+
 }
 
-%--------------environment for time sublists--------------
-\newenvironment{timesublist}
+%----------- normal lists ----------------
+\newenvironment{normallist}
 {
+\vspace{-4mm}
 
-\vspace{4mm}
-
-    \fontsize{10pt}{12pt}\selectfont
+    \ordinaryfontsize
   \begin{list}{$\bullet$}{ % label
     \setlength{\leftmargin}{5mm}
-    \setlength{\itemsep}{-1.5mm}
+    \setlength{\itemsep}{-0.5mm}
   }
 }
 {
@@ -99,19 +97,27 @@
   \vspace{-6mm}
 }
 
-%----------- paper lists ----------------
-\newenvironment{paperlist}
+%----------- no bullet lists ----------------
+\newenvironment{nobullist}
 {
-\vspace{4mm}
+\vspace{-2mm}
 
     \fontsize{10pt}{12pt}\selectfont
-  \begin{list}{$\bullet$}{ % label
+  \begin{list}{}{ % label
     \setlength{\leftmargin}{5mm}
-    \setlength{\itemsep}{-1.5mm}
+    \setlength{\itemsep}{-0.5mm}
   }
 }
 {
   \end{list}
   
   \vspace{-5mm}
+}
+
+%%%%%%%%%%%%%%% date of update %%%%%%%%%%%
+\newcommand{\monthyear}{%
+    \ifcase\month
+    \or January\or February\or March\or April\or May\or June%
+    \or July\or August\or September\or October\or November\or December%
+    \fi\space \the\year
 }
